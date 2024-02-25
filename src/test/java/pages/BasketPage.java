@@ -1,0 +1,51 @@
+package pages;
+
+import com.codeborne.selenide.Condition;
+import com.codeborne.selenide.SelenideElement;
+
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
+
+public class BasketPage {
+
+    SelenideElement productName = $(".xoo-wsc-pname"),
+            totalPrice = $("span[class=\"xoo-wsc-ft-amt-value\"]"),
+            deleteButton = $(".xoo-wsc-smr-del"),
+            plus = $(".xoo-wsc-plus");
+
+    public BasketPage checkProductName(String value) {
+        productName.shouldBe(Condition.visible, Duration.ofSeconds(10)).shouldHave(Condition.text(value));
+        return this;
+
+    }
+
+    public BasketPage addCountProduct() {
+        plus.click();
+        sleep(3000);
+        return this;
+
+    }
+
+    public String getTotalPrice() {
+
+        System.out.println(totalPrice.getText().replace(".00 Р", ""));
+        return totalPrice.getText().replaceAll(",", "").replace(".00 Р", "");
+
+
+    }
+
+    public BasketPage checkEmptyBasket() {
+        productName.shouldNot(Condition.visible);
+        return this;
+
+    }
+
+    public BasketPage deleteFromBasket() {
+        deleteButton.click();
+        return this;
+
+    }
+
+}
