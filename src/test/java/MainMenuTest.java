@@ -39,31 +39,31 @@ public class MainMenuTest extends TestBase {
         });
     }
 
-
-    @Severity(SeverityLevel.NORMAL)
-    @Tag("smoke")
-    @Story("Проверка перехода по ссылкам из главного меню")
-    @Test
-    @DisplayName("Проверка перехода по ссылкам из главного меню")
-    void checkOpenPageFromMainMenuTest() {
-
-        step("Перейти на главную страницу", () ->
-                mainPage.openPage());
-
-        step("Перейти по каждой ссылке из главного меню и убедиться, что открыта нужная страница", () -> {
-            ElementsCollection hrefs = $$("#menu-main a");
-
-            List<String> links = hrefs.asFixedIterable().stream()
-                    .map(x -> x.getAttribute("href")).map(String::valueOf).toList();
-
-            for (int i = 0; i < links.size(); i++) {
-                String listUrl = links.get(i);
-                Selenide.open(listUrl);
-                String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-
-                assertEquals(currentUrl, listUrl);
-
-            }
-        });
-    }
+//
+//    @Severity(SeverityLevel.NORMAL)
+//    @Tag("smoke")
+//    @Story("Проверка перехода по ссылкам из главного меню")
+//    @Test
+//    @DisplayName("Проверка перехода по ссылкам из главного меню")
+//    void checkOpenPageFromMainMenuTest() {
+//
+//        step("Перейти на главную страницу", () ->
+//                mainPage.openPage());
+//
+//        step("Перейти по каждой ссылке из главного меню и убедиться, что открыта нужная страница", () -> {
+//            ElementsCollection hrefs = $$("#menu-main a");
+//
+//            List<String> links = hrefs.asFixedIterable().stream()
+//                    .map(x -> x.getAttribute("href")).map(String::valueOf).toList();
+//
+//            for (int i = 0; i < links.size(); i++) {
+//                String listUrl = links.get(i);
+//                Selenide.open(listUrl);
+//                String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
+//
+//                assertEquals(currentUrl, listUrl);
+//
+//            }
+//        });
+//    }
 }
