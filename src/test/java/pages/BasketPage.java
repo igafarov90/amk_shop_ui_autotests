@@ -10,7 +10,7 @@ import static com.codeborne.selenide.Selenide.sleep;
 
 public class BasketPage {
 
-    SelenideElement productName = $(".xoo-wsc-pname"),
+    private final SelenideElement productName = $(".xoo-wsc-pname"),
             totalPrice = $("span[class=\"xoo-wsc-ft-amt-value\"]"),
             deleteButton = $(".xoo-wsc-smr-del"),
             plus = $(".xoo-wsc-plus");
@@ -30,9 +30,7 @@ public class BasketPage {
 
     public String getTotalPrice() {
 
-        System.out.println(totalPrice.getText().replace(".00 Р", ""));
         return totalPrice.getText().replaceAll(",", "").replace(".00 Р", "");
-
 
     }
 

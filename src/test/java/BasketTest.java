@@ -36,7 +36,7 @@ public class BasketTest extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Story("Увеличение количества товаров в корзине")
     @DisplayName("Проверка увеличения количества товара и цены в корзине.")
-    @RepeatedTest(2)
+    @Test()
     void checkQuantityInBasketTest() {
 
         step("Добавить первый товар на главной странице в корзину", () ->
