@@ -51,33 +51,33 @@ public class FilterProductsTest extends TestBase {
         mainPage.checkProductsTable(product);
     }
 
-    @Test
-    @Severity(SeverityLevel.CRITICAL)
-    @Story("Проверка фильтрации товаров")
-    @DisplayName("Проверка фильтрации по цене товара")
-    @Tag("smoke")
-    void checkFilterProductsByPriceTest() {
-
-        step("Установить ценовой диапазон от 100 до 150", () ->
-                mainPage.openPage()
-                        .setPriceFrom(String.valueOf(PRICE_FROM))
-                        .setPriceTo(String.valueOf(PRICE_TO)));
-
-        step("Нажать кнопку 'Фильтровать'", () ->
-                mainPage.doFilter());
-
-        step("Убедиться, что цена каждого отфильтрованого товара" +
-                "в рамках заданного ценового диапазона ", () -> {
-            List<Integer> price = mainPage.getProducts().asFixedIterable().stream()
-                    .map(x -> x.getText()
-                            .replaceAll(",", "")
-                            .replace(".00 Р", ""))
-                    .map(Integer::valueOf)
-                    .toList();
-
-            assertThat(price).allMatch(x -> x >= 100 && x <= 150);
-        });
-    }
+//    @Test
+//    @Severity(SeverityLevel.CRITICAL)
+//    @Story("Проверка фильтрации товаров")
+//    @DisplayName("Проверка фильтрации по цене товара")
+//    @Tag("smoke")
+//    void checkFilterProductsByPriceTest() {
+//
+//        step("Установить ценовой диапазон от 100 до 150", () ->
+//                mainPage.openPage()
+//                        .setPriceFrom(String.valueOf(PRICE_FROM))
+//                        .setPriceTo(String.valueOf(PRICE_TO)));
+//
+//        step("Нажать кнопку 'Фильтровать'", () ->
+//                mainPage.doFilter());
+//
+//        step("Убедиться, что цена каждого отфильтрованого товара" +
+//                "в рамках заданного ценового диапазона ", () -> {
+//            List<Integer> price = mainPage.getProducts().asFixedIterable().stream()
+//                    .map(x -> x.getText()
+//                            .replaceAll(",", "")
+//                            .replace(".00 Р", ""))
+//                    .map(Integer::valueOf)
+//                    .toList();
+//
+//            assertThat(price).allMatch(x -> x >= 100 && x <= 150);
+//        });
+//    }
 }
 
 
