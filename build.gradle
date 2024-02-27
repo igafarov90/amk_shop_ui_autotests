@@ -15,10 +15,10 @@ def allureVersion = "2.21.0",
     assertjCoreVersion = "3.23.1",
     webdriverVersion = "5.6.2"
 
-//java {
-//    sourceCompatibility = JavaVersion.VERSION_17
-//    targetCompatibility = JavaVersion.VERSION_17
-//}
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
 
 compileTestJava {
     options.encoding = 'UTF-8'
