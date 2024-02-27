@@ -19,8 +19,14 @@ public class MainPage {
             priceTo = $(".woof_price_filter_txt_to");
 
 
-    private final ElementsCollection firstProductCard = $$(".cm-wp-post-image__wrap"),
-            checkBox = $$("li label");
+    private final ElementsCollection firstProductCard = $$(".cm-wp-post-image__wrap");
+    private final ElementsCollection checkBox = $$("li label");
+
+    public ElementsCollection getHrefs() {
+        return hrefs;
+    }
+
+    private final ElementsCollection hrefs = $$("#menu-main a");
 
     public ElementsCollection getProducts() {
         return products;

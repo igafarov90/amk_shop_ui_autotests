@@ -1,4 +1,3 @@
-import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.WebDriverRunner;
 import io.qameta.allure.*;
@@ -6,9 +5,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import static com.codeborne.selenide.Selenide.$$;
 import static helpers.MainMenu.*;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -39,31 +38,33 @@ public class MainMenuTest extends TestBase {
         });
     }
 
-//
-//    @Severity(SeverityLevel.NORMAL)
-//    @Tag("smoke")
-//    @Story("Проверка перехода по ссылкам из главного меню")
-//    @Test
-//    @DisplayName("Проверка перехода по ссылкам из главного меню")
-//    void checkOpenPageFromMainMenuTest() {
-//
-//        step("Перейти на главную страницу", () ->
-//                mainPage.openPage());
-//
-//        step("Перейти по каждой ссылке из главного меню и убедиться, что открыта нужная страница", () -> {
-//            ElementsCollection hrefs = $$("#menu-main a");
-//
-//            List<String> links = hrefs.asFixedIterable().stream()
-//                    .map(x -> x.getAttribute("href")).map(String::valueOf).toList();
-//
-//            for (int i = 0; i < links.size(); i++) {
-//                String listUrl = links.get(i);
-//                Selenide.open(listUrl);
-//                String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
-//
-//                assertEquals(currentUrl, listUrl);
-//
-//            }
-//        });
-//    }
+
+    @Severity(SeverityLevel.NORMAL)
+    @Tag("tt")
+    @Story("Проверка перехода по ссылкам из главного меню")
+    @Test
+    @DisplayName("Проверка перехода по ссылкам из главного меню")
+    void checkOpenPageFromMainMenuTest() {
+
+        step("Перейти на главную страницу", () ->
+                mainPage.openPage());
+
+        step("Перейти по каждой ссылке из главного меню и убедиться, что открыта нужная страница", () -> {
+
+
+            List<String> links = new ArrayList<>();
+            int i = 0;
+            for (; i < mainPage.getHrefs().size(); i++) {
+                links.add(mainPage.getHrefs().get(i).getAttribute("href"));
+            }
+
+            for (String listUrl : links) {
+                Selenide.open(listUrl);
+                String currentUrl = WebDriverRunner.getWebDriver().getCurrentUrl();
+
+                assertEquals(currentUrl, listUrl);
+
+            }
+        });
+    }
 }
