@@ -1,7 +1,7 @@
 # Проект по автоматизации тестирования интернет-магазина [AMK](https://shop.proamk.ru/)
 
 <p align="center">  
-<img alt="Garage" src="/media/screenshots/amk.jpeg">
+<img alt="shop.proamk" src="/media/screenshots/amk.jpg">
 
 
 
