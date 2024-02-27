@@ -16,7 +16,6 @@ def allureVersion = "2.21.0",
     webdriverVersion = "5.6.2"
 
 
-
 compileTestJava {
     options.encoding = 'UTF-8'
 }
@@ -75,8 +74,4 @@ task ui_test(type: Test) {
         includeTags("ui")
     }
 
-    task filter_test(type: Test) {
-        useJUnitPlatform {
-            includeTags("filter")
-        }
-}}
+}

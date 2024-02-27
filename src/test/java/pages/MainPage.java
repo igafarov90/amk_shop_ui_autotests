@@ -19,20 +19,19 @@ public class MainPage {
             priceTo = $(".woof_price_filter_txt_to");
 
 
-    private final ElementsCollection firstProductCard = $$(".cm-wp-post-image__wrap");
-    private final ElementsCollection checkBox = $$("li label");
+    private final ElementsCollection firstProductCard = $$(".cm-wp-post-image__wrap"),
+            checkBox = $$("li label"),
+            hrefs = $$("#menu-main a"),
+            products = $$("ul.columns-4 span.price");
 
     public ElementsCollection getHrefs() {
         return hrefs;
     }
 
-    private final ElementsCollection hrefs = $$("#menu-main a");
-
     public ElementsCollection getProducts() {
         return products;
     }
 
-    private final ElementsCollection products = $$("ul.columns-4 span.price");
 
     public MainPage openPage() {
         open("");
@@ -55,12 +54,6 @@ public class MainPage {
         mainMenu.shouldHave(text(value));
         return this;
     }
-
-    public MainPage goToPage(String value) {
-        mainMenu.find(byText(value)).click();
-        return this;
-    }
-
 
     public MainPage installCheckBox(String value) {
         checkBox.find(text(value)).click();

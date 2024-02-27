@@ -51,7 +51,6 @@ public class MainMenuTest extends TestBase {
 
         step("Перейти по каждой ссылке из главного меню и убедиться, что открыта нужная страница", () -> {
 
-
             List<String> links = new ArrayList<>();
             int i = 0;
             for (; i < mainPage.getHrefs().size(); i++) {

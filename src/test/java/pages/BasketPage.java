@@ -29,7 +29,6 @@ public class BasketPage {
     }
 
     public String getTotalPrice() {
-
         return totalPrice.getText().replaceAll(",", "").replace(".00 Р", "");
 
     }
