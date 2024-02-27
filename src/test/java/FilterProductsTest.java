@@ -40,7 +40,8 @@ public class FilterProductsTest extends TestBase {
     @Story("Проверка фильтрации товаров")
     @ParameterizedTest(name = "Фильтрация товара {0}")
     @MethodSource
-    @Tag("smoke")
+  //  @Tag("smoke")
+    @Tag("filter")
     void filterProductsTest(String filter, String product) {
 
         step("Установить чекбокс для фильтра и нажать кнопку 'Фильтровать'", () ->
@@ -55,7 +56,8 @@ public class FilterProductsTest extends TestBase {
     @Severity(SeverityLevel.CRITICAL)
     @Story("Проверка фильтрации товаров")
     @DisplayName("Проверка фильтрации по цене товара")
-    @Tag("smoke")
+   // @Tag("smoke")
+    @Tag("filter")
     void checkFilterProductsByPriceTest() {
 
         step("Установить ценовой диапазон от 100 до 150", () ->
