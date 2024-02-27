@@ -57,7 +57,7 @@ public class BasketTest extends TestBase {
 
     @Severity(SeverityLevel.NORMAL)
     @Test()
-    @Story("Удаление товара из корзину")
+    @Story("Удаление товара из корзины")
     @DisplayName("Проверка удаления товара из корзины")
     void deleteItemFromBasketTest() {
         step("Выбрать первый товар на главной странице", () ->

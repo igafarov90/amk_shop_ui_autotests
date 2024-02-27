@@ -34,7 +34,6 @@ public class FilterProductsTest extends TestBase {
                 Arguments.of(PAPER_PRODUCTS.getMainMenu(), DIARY),
                 Arguments.of(BABY_CLOTHES.getMainMenu(), T_SHORT),
                 Arguments.of(SOUVENIRS.getMainMenu(), NOTEBOOK));
-
     }
 
     @Severity(SeverityLevel.CRITICAL)
