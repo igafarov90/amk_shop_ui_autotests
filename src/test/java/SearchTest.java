@@ -8,20 +8,19 @@ import pages.SearchPage;
 
 import static io.qameta.allure.Allure.step;
 
-@Epic("search")
+@Epic("UI")
 @Owner("Ilgiz Gafarov")
 @Feature("Тестирование функционала поиска")
-@Tag("ui")
+@Tag("search")
 @DisplayName("Тестирование функционала поиска")
 public class SearchTest extends TestBase {
     SearchPage searchPage = new SearchPage();
 
     @Severity(SeverityLevel.CRITICAL)
     @Story("Проверка поиска товара")
-
     @ParameterizedTest(name = "При поиске товара {0}")
     @EnumSource(Products.class)
-    @Tag("smoke")
+
     void searchResultShouldContainTextTest(Products query) {
         step("Открыть главную страницу и заполнить поисковое поле {0}", () -> {
             mainPage.openPage()
