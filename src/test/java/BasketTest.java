@@ -8,10 +8,10 @@ import pages.ProductPage;
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Epic("basket")
+@Epic("UI")
 @Owner("Ilgiz Gafarov")
 @Feature("Тестирование функционала корзины")
-@Tag("smoke")
+@Tag("basket")
 @DisplayName("Тестирование функционала добавления и удаления товара")
 public class BasketTest extends TestBase {
 

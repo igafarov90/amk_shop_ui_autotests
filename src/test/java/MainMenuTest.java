@@ -14,7 +14,6 @@ import static io.qameta.allure.Allure.step;
 public class MainMenuTest extends TestBase {
 
     @Test
-    @Tag("smoke")
     @Severity(SeverityLevel.NORMAL)
     @Story("Проверка главного меню")
     @DisplayName("Проверка элементов главного меню")
