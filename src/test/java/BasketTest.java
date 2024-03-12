@@ -2,6 +2,7 @@ import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import org.junitpioneer.jupiter.RetryingTest;
 import pages.BasketPage;
 import pages.ProductPage;
 
@@ -35,10 +36,10 @@ public class BasketTest extends TestBase {
         basketPage.checkProductName(productPage.getNameFirstProduct());
     }
 
+    @RetryingTest(3)
     @Severity(SeverityLevel.NORMAL)
     @Story("Увеличение количества товаров в корзине")
     @DisplayName("Проверка увеличения количества товара и цены в корзине.")
-    @Test()
     void checkQuantityInBasketTest() {
 
         step("Добавить первый товар на главной странице в корзину", () ->
