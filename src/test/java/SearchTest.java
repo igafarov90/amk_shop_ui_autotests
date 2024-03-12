@@ -16,11 +16,11 @@ import static io.qameta.allure.Allure.step;
 public class SearchTest extends TestBase {
     SearchPage searchPage = new SearchPage();
 
+    @DisplayName("Поиск товара")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Проверка поиска товара")
-    @ParameterizedTest(name = "При поиске товара {0}")
+    @ParameterizedTest(name = "{0} выдает верный результат")
     @EnumSource(Products.class)
-
     void searchResultShouldContainTextTest(Products query) {
         step("Открыть главную страницу и заполнить поисковое поле {0}", () -> {
             mainPage.openPage()

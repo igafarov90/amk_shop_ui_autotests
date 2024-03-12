@@ -3,9 +3,10 @@ package pages;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Selectors.byTagAndText;
 import static com.codeborne.selenide.Selenide.$;
-import static com.codeborne.selenide.Selenide.open;
 
 public class ProductPage {
 
@@ -17,6 +18,7 @@ public class ProductPage {
     }
 
     public ProductPage addProductToBasket() {
+        productName.shouldBe(Condition.visible, Duration.ofSeconds(6));
         basket.click();
         return this;
     }

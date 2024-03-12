@@ -36,9 +36,10 @@ public class FilterProductsTest extends TestBase {
                 Arguments.of(SOUVENIRS.getMainMenu(), NOTEBOOK));
     }
 
+    @DisplayName("Фильтрация товара")
     @Severity(SeverityLevel.CRITICAL)
     @Story("Проверка фильтрации товаров")
-    @ParameterizedTest(name = "Фильтрация товара {0}")
+    @ParameterizedTest(name = "{0} выдает верный результат")
     @MethodSource
     void filterProductsTest(String filter, String product) {
 
@@ -47,7 +48,7 @@ public class FilterProductsTest extends TestBase {
                         .installCheckBox(filter)
                         .doFilter());
         step("Проверить наличие товаров в таблице после фильтрации", () ->
-        mainPage.checkProductsTable(product));
+                mainPage.checkProductsTable(product));
     }
 
     @Test
@@ -57,13 +58,13 @@ public class FilterProductsTest extends TestBase {
     void checkFilterProductsByPriceTest() {
 
         step("Установить ценовой диапазон от 100 до 150", () -> {
-                    step("Открыть главную страницу", () ->
-                            mainPage.openPage());
-                    step("Установить цену 'от' = 100", () ->
-                            mainPage.setPriceFrom(String.valueOf(PRICE_FROM)));
-                    step("Установить цену 'до' = 150", () ->
-                            mainPage.setPriceTo(String.valueOf(PRICE_TO)));
-                });
+            step("Открыть главную страницу", () ->
+                    mainPage.openPage());
+            step("Установить цену 'от' = 100", () ->
+                    mainPage.setPriceFrom(String.valueOf(PRICE_FROM)));
+            step("Установить цену 'до' = 150", () ->
+                    mainPage.setPriceTo(String.valueOf(PRICE_TO)));
+        });
 
         step("Нажать кнопку 'Фильтровать'", () ->
                 mainPage.doFilter());

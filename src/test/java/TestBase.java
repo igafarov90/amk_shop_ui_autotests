@@ -25,7 +25,7 @@ public class TestBase {
         Configuration.baseUrl = webDriverConfig.baseUrl();
         Configuration.browser = webDriverConfig.browser();
         Configuration.browserSize = webDriverConfig.browserSize();
-        Configuration.browserVersion= webDriverConfig.browserVersion();
+        Configuration.browserVersion = webDriverConfig.browserVersion();
         Configuration.pageLoadStrategy = "eager";
 
 
@@ -50,6 +50,7 @@ public class TestBase {
     void afterEach() {
         Attach.screenshotAs("Last screenshot");
         Attach.addVideo();
+        Attach.browserConsoleLogs();
         if (Configuration.browser.equals("CHROME")) {
             Attach.browserConsoleLogs();
         }

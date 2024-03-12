@@ -3,9 +3,11 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
+import java.time.Duration;
+
 import static com.codeborne.selenide.Condition.text;
+import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byTagAndText;
-import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
@@ -21,12 +23,7 @@ public class MainPage {
 
     private final ElementsCollection firstProductCard = $$(".cm-wp-post-image__wrap"),
             checkBox = $$("li label"),
-            hrefs = $$("#menu-main a"),
             products = $$("ul.columns-4 span.price");
-
-    public ElementsCollection getHrefs() {
-        return hrefs;
-    }
 
     public ElementsCollection getProducts() {
         return products;
@@ -46,7 +43,6 @@ public class MainPage {
 
     public MainPage chooseFirstProductMainPage() {
         firstProductCard.get(0).click();
-        sleep(1000);
         return this;
     }
 

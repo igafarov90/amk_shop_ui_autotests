@@ -9,7 +9,7 @@ import static io.qameta.allure.Allure.step;
 @Epic("UI")
 @Owner("Ilgiz Gafarov")
 @Feature("Проверка страниц из меню навигации")
-@Tag("ui")
+@Tag("main_page")
 @DisplayName("Тестирование функционала страниц из меню навигации")
 public class MainMenuTest extends TestBase {
 

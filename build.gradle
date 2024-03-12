@@ -83,3 +83,9 @@ task search_test(type: Test) {
         includeTags("search")
     }
 }
+
+task main_page_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("main_page")
+    }
+}
