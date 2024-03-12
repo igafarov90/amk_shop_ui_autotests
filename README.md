@@ -52,7 +52,6 @@ ____
 ____
 
 - :white_check_mark: Проверка элементов главного меню
-- :white_check_mark: Проверка перехода по ссылкам из главного меню
 - :white_check_mark: Параметризованная проверка поиска товара
 - :white_check_mark: Параметризованная проверка фильтрации товаров
 - :white_check_mark: Проверка фильтрации по цене товара
@@ -87,7 +86,7 @@ ____
 
 <a id="allure"></a>
 
-## <img src="media/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Allure <a target="_blank" href="https://jenkins.autotests.cloud/job/garage_UI_project/allure/">отчёт</a>
+## <img src="media/logo/Allure.svg" width="25" height="25"  alt="Allure"/></a> Allure <a target="_blank" href="https://jenkins.autotests.cloud/job/igafarov_amk_ui_autotests/allure/">отчёт</a>
 
 ### *Основная страница отчёта*
 

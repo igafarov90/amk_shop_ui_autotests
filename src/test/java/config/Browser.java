@@ -1,6 +1,6 @@
-package config;
-
-public enum Browser {
-    CHROME,
-    FIREFOX
-}
+//package config;
+//
+//public enum Browser {
+//    CHROME,
+//    FIREFOX
+//}

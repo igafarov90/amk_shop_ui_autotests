@@ -12,7 +12,7 @@ def allureVersion = "2.21.0",
     junitVersion = "5.10.0",
     slf4jVersion = "2.0.7",
     ownerVersion = "1.0.12",
-    assertjCoreVersion = "3.23.1",
+    assertjCoreVersion = "3.25.2",
     webdriverVersion = "5.6.2"
 
 
@@ -47,7 +47,6 @@ dependencies {
             "org.assertj:assertj-core:$assertjCoreVersion",
             "io.github.bonigarcia:webdrivermanager:$webdriverVersion",
             "org.aeonbits.owner:owner:$ownerVersion",
-            'org.assertj:assertj-core:3.25.2',
             "commons-io:commons-io:2.6"
 
     )
@@ -69,9 +68,18 @@ tasks.withType(Test) {
     }
 }
 
-task ui_test(type: Test) {
+task filter_test(type: Test) {
     useJUnitPlatform {
-        includeTags("ui")
+        includeTags("filter")
     }
-
+}
+    task basket_test(type: Test) {
+        useJUnitPlatform {
+            includeTags("basket")
+        }
+}
+task search_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("search")
+    }
 }

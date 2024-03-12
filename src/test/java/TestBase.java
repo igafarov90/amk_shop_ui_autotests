@@ -6,11 +6,9 @@ import io.qameta.allure.selenide.AllureSelenide;
 import org.aeonbits.owner.ConfigFactory;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
+import org.junit.jupiter.api.BeforeEach;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import pages.BasketPage;
 import pages.MainPage;
-import pages.ProductPage;
-import pages.SearchPage;
 
 import java.util.Map;
 
@@ -20,9 +18,6 @@ public class TestBase {
     final static WebDriverConfig webDriverConfig = ConfigFactory.create(WebDriverConfig.class, System.getProperties());
 
     MainPage mainPage = new MainPage();
-    SearchPage searchPage = new SearchPage();
-    ProductPage productPage = new ProductPage();
-    BasketPage basketPage = new BasketPage();
 
     @BeforeAll
     static void setUp() {
@@ -30,8 +25,10 @@ public class TestBase {
         Configuration.baseUrl = webDriverConfig.baseUrl();
         Configuration.browser = webDriverConfig.browser();
         Configuration.browserSize = webDriverConfig.browserSize();
+        Configuration.browserVersion= webDriverConfig.browserVersion();
         Configuration.pageLoadStrategy = "eager";
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
+
         if (webDriverConfig.isRemote()) {
             Configuration.remote = String.valueOf(webDriverConfig.remoteUrl());
             DesiredCapabilities capabilities = new DesiredCapabilities();
@@ -44,13 +41,18 @@ public class TestBase {
         }
     }
 
+    @BeforeEach
+    void beforeEach() {
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+    }
+
     @AfterEach
-    protected void afterEach() {
+    void afterEach() {
         Attach.screenshotAs("Last screenshot");
         Attach.addVideo();
         if (Configuration.browser.equals("CHROME")) {
             Attach.browserConsoleLogs();
-            closeWebDriver();
         }
+        closeWebDriver();
     }
 }

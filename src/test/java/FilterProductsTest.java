@@ -17,7 +17,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @Epic("UI")
 @Owner("Ilgiz Gafarov")
 @Feature("Тестирование функционала фильтра")
-@Tag("ui")
+@Tag("filter")
 @DisplayName("Тестирование функционала фильтра")
 public class FilterProductsTest extends TestBase {
 
@@ -47,8 +47,8 @@ public class FilterProductsTest extends TestBase {
                 mainPage.openPage()
                         .installCheckBox(filter)
                         .doFilter());
-        step("Проверить наличие товаров в таблице после фильтрации");
-        mainPage.checkProductsTable(product);
+        step("Проверить наличие товаров в таблице после фильтрации", () ->
+        mainPage.checkProductsTable(product));
     }
 
     @Test
@@ -58,16 +58,20 @@ public class FilterProductsTest extends TestBase {
     @Tag("smoke")
     void checkFilterProductsByPriceTest() {
 
-        step("Установить ценовой диапазон от 100 до 150", () ->
-                mainPage.openPage()
-                        .setPriceFrom(String.valueOf(PRICE_FROM))
-                        .setPriceTo(String.valueOf(PRICE_TO)));
+        step("Установить ценовой диапазон от 100 до 150", () -> {
+                    step("Открыть главную страницу", () ->
+                            mainPage.openPage());
+                    step("Установить цену 'от' = 100", () ->
+                            mainPage.setPriceFrom(String.valueOf(PRICE_FROM)));
+                    step("Установить цену 'до' = 150", () ->
+                            mainPage.setPriceTo(String.valueOf(PRICE_TO)));
+                });
 
         step("Нажать кнопку 'Фильтровать'", () ->
                 mainPage.doFilter());
 
         step("Убедиться, что цена каждого отфильтрованого товара" +
-                "в рамках заданного ценового диапазона ", () -> {
+                " в рамках заданного ценового диапазона ", () -> {
 
             List<Integer> price = new ArrayList<>();
             int i = 0;

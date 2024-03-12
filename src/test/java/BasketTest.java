@@ -1,20 +1,22 @@
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
+import pages.BasketPage;
+import pages.ProductPage;
 
 import static io.qameta.allure.Allure.step;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-@Epic("UI")
+@Epic("basket")
 @Owner("Ilgiz Gafarov")
 @Feature("Тестирование функционала корзины")
-@Tag("ui")
+@Tag("smoke")
 @DisplayName("Тестирование функционала добавления и удаления товара")
 public class BasketTest extends TestBase {
 
-    private int count = 1;
+    ProductPage productPage = new ProductPage();
+    BasketPage basketPage = new BasketPage();
 
     @Severity(SeverityLevel.NORMAL)
     @Test()
@@ -44,7 +46,7 @@ public class BasketTest extends TestBase {
                         .chooseFirstProductMainPage());
         productPage.addProductToBasket();
 
-        step("Изменить количество товара на" + count + " в корзине");
+        step("Изменить количество товара на 1 в корзине");
         int a = Integer.parseInt(basketPage.getTotalPrice());
         basketPage.addCountProduct();
 
