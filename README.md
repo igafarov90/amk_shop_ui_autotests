@@ -74,7 +74,17 @@ gradle clean test -Denv=local
 ```
 gradle clean test -Denv=remote
 ```
-
+***Запуск тестов с переопределенными параметрами***
+```
+gradle clean 
+${TASK} -Dbrowser="${BROWSER}" -DbrowserVersion="${VERSION}" -DbrowserSize="${SIZE}" -Denv="${ENVIRONMENT}" 
+```
+###
+* <code>TASK</code> (набор тестов для запуска)
+* <code>BROWSER</code> – браузер, в котором будут выполняться тесты.
+* <code>SIZE</code> – размер окна браузера, в котором будут выполняться тесты.
+* <code>VERSION</code> – версия браузера, в которой будут выполняться тесты. 
+* <code>ENVIRONMENT</code> – окружение, на котором будут запускаться тесты.
 ____
 <a id="jenkins"></a>
 
@@ -82,6 +92,11 @@ ____
 
 <p align="center">  
 <a href="https://jenkins.autotests.cloud/job/igafarov_amk_ui_autotests/"><img src="media/screenshots/jenkins.jpg" alt="Jenkins"/></a>  
+</p>
+
+## <img alt="Jenkins" height="25" src="media/logo/Jenkins.svg" width="25"/></a><a name="Параметры сборки"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/igafarov_amk_ui_autotests/)</a>
+<p align="center">  
+<a href="https://jenkins.autotests.cloud/job/igafarov_amk_ui_autotests/"><img src="media/screenshots/build_parameters.jpg" alt="Jenkins"/></a>  
 </p>
 
 <a id="allure"></a>
