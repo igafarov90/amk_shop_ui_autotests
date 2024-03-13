@@ -94,7 +94,7 @@ ____
 <a href="https://jenkins.autotests.cloud/job/igafarov_amk_ui_autotests/"><img src="media/screenshots/jenkins.jpg" alt="Jenkins"/></a>  
 </p>
 
-## <img alt="Jenkins" height="25" src="media/logo/Jenkins.svg" width="25"/></a><a name="Параметры сборки"></a>Сборка в [Jenkins](https://jenkins.autotests.cloud/job/igafarov_amk_ui_autotests/)</a>
+## <img alt="Jenkins" height="25" src="media/logo/Jenkins.svg" width="25"/></a><a name="Параметры сборки"></a>Параметры сборки в [Jenkins](https://jenkins.autotests.cloud/job/igafarov_amk_ui_autotests/)</a>
 <p align="center">  
 <a href="https://jenkins.autotests.cloud/job/igafarov_amk_ui_autotests/"><img src="media/screenshots/build_parameters.jpg" alt="Jenkins"/></a>  
 </p>
