@@ -15,7 +15,7 @@ public interface WebDriverConfig extends Config {
     String baseUrl();
 
     @Key("browser")
-    @DefaultValue("chrome")
+    @DefaultValue("firefox")
     String browser();
 
     @Key("browserVersion")

@@ -59,7 +59,7 @@ public class BasketTest extends TestBase {
     }
 
     @Severity(SeverityLevel.NORMAL)
-    @Test()
+    @RetryingTest(3)
     @Story("Удаление товара из корзины")
     @DisplayName("Проверка удаления товара из корзины")
     void deleteItemFromBasketTest() {

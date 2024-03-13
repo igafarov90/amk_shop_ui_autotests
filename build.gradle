@@ -74,10 +74,10 @@ task filter_test(type: Test) {
         includeTags("filter")
     }
 }
-    task basket_test(type: Test) {
-        useJUnitPlatform {
-            includeTags("basket")
-        }
+task basket_test(type: Test) {
+    useJUnitPlatform {
+        includeTags("basket")
+    }
 }
 task search_test(type: Test) {
     useJUnitPlatform {
