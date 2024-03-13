@@ -76,8 +76,7 @@ gradle clean test -Denv=remote
 ```
 ***Запуск тестов с переопределенными параметрами***
 ```
-gradle clean 
-${TASK} -Dbrowser="${BROWSER}" -DbrowserVersion="${VERSION}" -DbrowserSize="${SIZE}" -Denv="${ENVIRONMENT}" 
+gradle clean ${TASK} -Dbrowser="${BROWSER}" -DbrowserVersion="${VERSION}" -DbrowserSize="${SIZE}" -Denv="${ENVIRONMENT}" 
 ```
 ###
 * <code>TASK</code> (набор тестов для запуска)
