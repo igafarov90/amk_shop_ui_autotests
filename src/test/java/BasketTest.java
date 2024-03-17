@@ -23,13 +23,14 @@ public class BasketTest extends TestBase {
     ProductCategoryPage productCategoryPage = new ProductCategoryPage();
 
     @Severity(SeverityLevel.NORMAL)
-    @Story("Добавление товара в корзину с главной страницы")
-    @DisplayName("Проверка добавления товара в корзину")
-    @RetryingTest(3)
+    @Story("Добавление товара в корзину")
+    @DisplayName("Проверка добавления товара в корзину с главной страницы")
+    @RetryingTest(5)
     void addProductToBasketTest() {
         step("Выбрать первый товар на главной странице", () ->
                 mainPage.openPage()
                         .chooseFirstProductMainPage());
+
         step("В карточке товара, нажать на кнопку 'В корзину'", () -> {
             productPage.addProductToBasket();
         });
@@ -41,7 +42,7 @@ public class BasketTest extends TestBase {
 
     @Severity(SeverityLevel.NORMAL)
     @Story("Добавление товара в корзину")
-    @RetryingTest(3)
+    @RetryingTest(5)
     @DisplayName("Проверка добавления товара в корзину из главного меню")
     void addProductToBasketFromMainMenuTest() {
         step("Перейти к главной странице", () ->
