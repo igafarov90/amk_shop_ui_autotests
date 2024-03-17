@@ -82,6 +82,7 @@ public class FilterProductsTest extends TestBase {
             assertThat(price).allMatch(x -> x >= 100 && x <= 150);
         });
     }
+
 }
 
 

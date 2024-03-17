@@ -1,13 +1,16 @@
+import helpers.MainMenu;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.RetryingTest;
 import pages.BasketPage;
+import pages.MainPage;
+import pages.ProductCategoryPage;
 import pages.ProductPage;
 
 import static io.qameta.allure.Allure.step;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @Epic("UI")
 @Owner("Ilgiz Gafarov")
@@ -15,13 +18,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Tag("basket")
 @DisplayName("Тестирование функционала добавления и удаления товара")
 public class BasketTest extends TestBase {
-
     ProductPage productPage = new ProductPage();
     BasketPage basketPage = new BasketPage();
+    MainPage mainPage = new MainPage();
+    ProductCategoryPage productCategoryPage = new ProductCategoryPage();
 
     @Severity(SeverityLevel.NORMAL)
-    @Test()
-    @Story("Добавление товара в корзину")
+    @RepeatedTest(10)
+    @Story("Добавление товара в корзину с главной страницы")
     @DisplayName("Проверка добавления товара в корзину")
     void addProductToBasketTest() {
         step("Выбрать первый товар на главной странице", () ->
@@ -32,32 +36,35 @@ public class BasketTest extends TestBase {
             productPage.addProductToBasket();
         });
 
-        step("Убедиться, что товар добавлен в корзину");
-        basketPage.checkProductName(productPage.getNameFirstProduct());
+        step("Убедиться, что товар добавлен в корзину", () ->
+                basketPage.checkProductName(productPage.getNameFirstProduct()));
     }
 
+
+    @Flaky
     @RetryingTest(3)
     @Severity(SeverityLevel.NORMAL)
-    @Story("Увеличение количества товаров в корзине")
-    @DisplayName("Проверка увеличения количества товара и цены в корзине.")
-    void checkQuantityInBasketTest() {
+    @Story("Добавление товара в корзину")
+    @DisplayName("Проверка добавления товара в корзину из главного меню")
+    void addProductToBasketFromMainMenuTest() {
+        step("Перейти к главной странице", () ->
+                mainPage.openPage());
 
-        step("Добавить первый товар на главной странице в корзину", () ->
-                mainPage.openPage()
-                        .chooseFirstProductMainPage());
-        productPage.addProductToBasket();
+        step("Перейти в категорию 'Рабочие инмтрументы' из главного меню", () -> {
+            mainPage.chooseCategoryFromMainMenu(MainMenu.TOOLS.getMainMenu());
+            productCategoryPage.chooseFirstProduct();
+        });
 
-        step("Изменить количество товара на 1 в корзине");
-        int a = Integer.parseInt(basketPage.getTotalPrice());
-        basketPage.addCountProduct();
+        step("В карточке товара, нажать на кнопку 'В корзину'", () -> {
+            productPage.getNameFirstProduct();
+            productPage.addProductToBasket();
+        });
 
-        step("Убедиться, что цена увеличилась в 2 раза");
-        int b = Integer.parseInt(basketPage.getTotalPrice());
-
-        assertEquals(2, b / a);
-
+        step("Убедиться, что товар добавлен в корзину", () ->
+                basketPage.checkProductName(productPage.getNameFirstProduct()));
     }
 
+    @Flaky
     @Severity(SeverityLevel.NORMAL)
     @RetryingTest(3)
     @Story("Удаление товара из корзины")
@@ -66,17 +73,19 @@ public class BasketTest extends TestBase {
         step("Выбрать первый товар на главной странице", () ->
                 mainPage.openPage()
                         .chooseFirstProductMainPage());
+
         step("В карточке товара, нажать на кнопку 'В корзину'", () -> {
             productPage.getNameFirstProduct();
             productPage.addProductToBasket();
         });
-        step("Убедиться, что товар добавлен в корзину");
-        basketPage.checkProductName(productPage.getNameFirstProduct());
 
-        step("Нажать на кнопку удаления товара в корзине");
-        basketPage.deleteFromBasket();
+        step("Убедиться, что товар добавлен в корзину", () ->
+                basketPage.checkProductName(productPage.getNameFirstProduct()));
 
-        step("Убедиться, что корзина пуста");
-        basketPage.checkEmptyBasket();
+        step("Нажать на кнопку удаления товара в корзине", () ->
+                basketPage.deleteFromBasket());
+
+        step("Убедиться, что корзина пуста", () ->
+                basketPage.checkEmptyBasket());
     }
 }

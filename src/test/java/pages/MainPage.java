@@ -3,11 +3,9 @@ package pages;
 import com.codeborne.selenide.ElementsCollection;
 import com.codeborne.selenide.SelenideElement;
 
-import java.time.Duration;
-
 import static com.codeborne.selenide.Condition.text;
-import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selectors.byTagAndText;
+import static com.codeborne.selenide.Selectors.byText;
 import static com.codeborne.selenide.Selenide.*;
 
 public class MainPage {
@@ -73,6 +71,11 @@ public class MainPage {
 
     public MainPage setPriceTo(String value) {
         priceTo.setValue(value);
+        return this;
+    }
+
+    public MainPage chooseCategoryFromMainMenu(String value) {
+        mainMenu.find(byText(value)).click();
         return this;
     }
 }
