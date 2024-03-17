@@ -1,13 +1,19 @@
+import com.codeborne.selenide.Condition;
 import helpers.MainMenu;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.RetryingTest;
 import pages.BasketPage;
 import pages.MainPage;
 import pages.ProductCategoryPage;
 import pages.ProductPage;
 
+import java.time.Duration;
+
+import static com.codeborne.selenide.Selenide.$;
+import static com.codeborne.selenide.Selenide.sleep;
 import static io.qameta.allure.Allure.step;
 
 @Epic("UI")
@@ -25,7 +31,7 @@ public class BasketTest extends TestBase {
     @Severity(SeverityLevel.NORMAL)
     @Story("Добавление товара в корзину")
     @DisplayName("Проверка добавления товара в корзину с главной страницы")
-    @RetryingTest(5)
+         @RetryingTest(5)
     void addProductToBasketTest() {
         step("Выбрать первый товар на главной странице", () ->
                 mainPage.openPage()
