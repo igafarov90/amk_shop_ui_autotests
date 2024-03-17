@@ -1,9 +1,7 @@
 import helpers.MainMenu;
 import io.qameta.allure.*;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.RepeatedTest;
 import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
 import org.junitpioneer.jupiter.RetryingTest;
 import pages.BasketPage;
 import pages.MainPage;
@@ -15,6 +13,7 @@ import static io.qameta.allure.Allure.step;
 @Epic("UI")
 @Owner("Ilgiz Gafarov")
 @Feature("Тестирование функционала корзины")
+@Flaky
 @Tag("basket")
 @DisplayName("Тестирование функционала добавления и удаления товара")
 public class BasketTest extends TestBase {
@@ -24,15 +23,14 @@ public class BasketTest extends TestBase {
     ProductCategoryPage productCategoryPage = new ProductCategoryPage();
 
     @Severity(SeverityLevel.NORMAL)
-    @RepeatedTest(10)
     @Story("Добавление товара в корзину с главной страницы")
     @DisplayName("Проверка добавления товара в корзину")
+    @RetryingTest(3)
     void addProductToBasketTest() {
         step("Выбрать первый товар на главной странице", () ->
                 mainPage.openPage()
                         .chooseFirstProductMainPage());
         step("В карточке товара, нажать на кнопку 'В корзину'", () -> {
-            productPage.getNameFirstProduct();
             productPage.addProductToBasket();
         });
 
@@ -41,10 +39,9 @@ public class BasketTest extends TestBase {
     }
 
 
-    @Flaky
-    @RetryingTest(3)
     @Severity(SeverityLevel.NORMAL)
     @Story("Добавление товара в корзину")
+    @RetryingTest(3)
     @DisplayName("Проверка добавления товара в корзину из главного меню")
     void addProductToBasketFromMainMenuTest() {
         step("Перейти к главной странице", () ->
@@ -56,7 +53,6 @@ public class BasketTest extends TestBase {
         });
 
         step("В карточке товара, нажать на кнопку 'В корзину'", () -> {
-            productPage.getNameFirstProduct();
             productPage.addProductToBasket();
         });
 
@@ -64,7 +60,6 @@ public class BasketTest extends TestBase {
                 basketPage.checkProductName(productPage.getNameFirstProduct()));
     }
 
-    @Flaky
     @Severity(SeverityLevel.NORMAL)
     @RetryingTest(3)
     @Story("Удаление товара из корзины")
@@ -75,7 +70,6 @@ public class BasketTest extends TestBase {
                         .chooseFirstProductMainPage());
 
         step("В карточке товара, нажать на кнопку 'В корзину'", () -> {
-            productPage.getNameFirstProduct();
             productPage.addProductToBasket();
         });
 
