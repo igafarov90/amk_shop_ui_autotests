@@ -22,12 +22,12 @@ public class SearchTest extends TestBase {
     @ParameterizedTest(name = "{0} выдает верный результат")
     @EnumSource(Products.class)
     void searchResultShouldContainTextTest(Products query) {
-        step("Открыть главную страницу и заполнить поисковое поле {0}", () -> {
+        step("Открыть главную страницу и заполнить поисковое поле", () -> {
             mainPage.openPage()
                     .searchProducts(query.getProducts());
         });
 
-        step("Убедиться, что поиск выдает верный результат {0}", () -> {
+        step("Убедиться, что поиск выдает верный результат", () -> {
             searchPage.checkSearchResult(query.getProducts());
         });
     }

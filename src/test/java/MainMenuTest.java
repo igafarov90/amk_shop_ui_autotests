@@ -18,8 +18,10 @@ public class MainMenuTest extends TestBase {
     @Story("Проверка главного меню")
     @DisplayName("Проверка элементов главного меню")
     void checkMainMenuTest() {
-        step("Проверить наличие элементов главного меню, на главной странице", () -> {
+        step("Открыть главную страницу", () -> {
             mainPage.openPage();
+        });
+        step("Проверить наличие элементов главного меню, на главной странице", () -> {
             mainPage.checkMainMenu(PAPER_PRODUCTS.getMainMenu());
             mainPage.checkMainMenu(PRIMER.getMainMenu());
             mainPage.checkMainMenu(BABY_CLOTHES.getMainMenu());
