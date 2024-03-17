@@ -49,7 +49,6 @@ public class TestBase {
     void afterEach() {
         Attach.screenshotAs("Last screenshot");
         Attach.addVideo();
-        //Attach.browserConsoleLogs();
         if (Configuration.browser.equals("chrome")) {
             Attach.browserConsoleLogs();
         }
